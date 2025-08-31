@@ -1,7 +1,8 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts"
@@ -12,6 +13,7 @@
   "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.3.0",
