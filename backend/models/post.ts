@@ -28,13 +28,18 @@ const postSchema = new Schema<IPost>(
         content: {
             type: String,
             required: true,
-            },
+        },
         tags: [
             {
                 type: String,
                 trim: true,
             },
         ],
+        author: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: true,
+        },
     },
     {timestamps: true}
 );

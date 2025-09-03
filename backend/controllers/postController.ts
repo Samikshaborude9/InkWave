@@ -1,6 +1,5 @@
 import type { Request , Response } from "express";
 import { Post } from "../models/post.js";
-import type bcrypt from "bcryptjs";
 
 //create new post
 export const createPost = async (req: Request, res: Response ) => {

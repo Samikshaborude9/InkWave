@@ -1,9 +1,14 @@
-import express,{type Application, type Request, type Response } from "express";
+import express, { type Application, type Request, type Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import "../backend/config/db.js"; // Import MongoDB connection
+import connectDB from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 dotenv.config();
+
+connectDB();
 
 const app: Application = express();
 
@@ -11,17 +16,18 @@ const app: Application = express();
 app.use(express.json());
 app.use(cors());
 
-// Health check route
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (_req: Request, res: Response) => {
   res.send("Server is running...");
 });
 
-// Example: attach routes here
-// import postRoutes from "./routes/postRoutes";
-// app.use("/api/posts", postRoutes);
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/posts", postRoutes);
 
-const PORT = process.env.PORT;;
+// Error handler
+app.use(errorHandler);
 
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
-  console.log(`Server running on localhost:${PORT}`);
+  console.log(`🚀 Server running on localhost:${PORT}`);
 });
