@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
+import commentRoutes from "./routes/commentRoutes.js"
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 dotenv.config();
@@ -23,6 +24,7 @@ app.get("/", (_req: Request, res: Response) => {
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
+app.use("api/posts/:postId/comments", commentRoutes);
 
 // Error handler
 app.use(errorHandler);
