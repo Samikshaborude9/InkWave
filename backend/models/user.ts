@@ -35,6 +35,8 @@ const UserSchema: Schema<IUser> = new Schema<IUser>(
     },
     bio: {
       type: String,
+      trim: true,
+      maxLength: 300,
       default: "",
     },
     avatar: {

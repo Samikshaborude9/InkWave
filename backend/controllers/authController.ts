@@ -35,15 +35,25 @@ export const login = async (req: Request, res: Response) =>{
         const { email, password }= req.body;
 
         const user = await User.findOne({ email });
+        console.log("User from DB:", user); // Add this
         if(!user) return res.status(400).json({ message : "Invalid credentials"});
+
+        console.log("Password from request:", password); // Add this
+        console.log("Password from DB:", user.password); // Add this
 
         const isMatch = await bcrypt.compare(password, user.password);
         if(!isMatch) return res.status(400).json({message: "Invalid credentials"});
 
+        const JWT_SECRET = process.env.JWT_SECRET;
+        if (!JWT_SECRET) {
+          throw new Error("JWT_SECRET is not defined");
+        }
+
         const token = jwt.sign({id: user._id}, JWT_SECRET, {expiresIn: "1h"});
 
         res.json({token, user: {id: user._id, username: user.username , email: user.email}});
-    } catch (err) {
-        res.status(500).json({error: "Something went wrong"});
+    } catch (err: any) {
+        console.error("Login error:", err.message, err.stack); // Add this
+        res.status(500).json({error: err.message});
     }
 };

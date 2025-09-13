@@ -8,7 +8,7 @@ import commentRoutes from "./routes/commentRoutes.js"
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 dotenv.config();
-
+console.log("JWT_SECRET from env:", process.env.JWT_SECRET);
 connectDB();
 
 const app: Application = express();
@@ -31,5 +31,5 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on localhost:${PORT}`);
+  console.log(`Server running on localhost:${PORT}`);
 });
