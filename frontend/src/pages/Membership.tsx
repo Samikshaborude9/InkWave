@@ -36,7 +36,7 @@ export default function Membership() {
             </CardHeader>
             <CardContent>
               <Button
-                onClick={() => navigate("/Login")}
+                onClick={() => navigate("/login")}
                 className="w-full bg-green-600 hover:bg-green-700 rounded-full mb-6"
               >
                 Get started
@@ -77,7 +77,7 @@ export default function Membership() {
             </CardHeader>
             <CardContent>
               <Button
-                onClick={() => navigate("/Login")}
+                onClick={() => navigate("/login")}
                 className="w-full bg-green-600 hover:bg-green-700 rounded-full mb-6">
                 Get started
               </Button>

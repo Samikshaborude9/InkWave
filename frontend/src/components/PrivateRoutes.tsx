@@ -10,7 +10,7 @@ const PrivateRoute = ({ children }: PrivateRouteProps) => {
   const token = localStorage.getItem("token");
 
   if (!token) {
-    return <Navigate to="/Login" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   return children;
