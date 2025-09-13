@@ -1,36 +1,42 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 
 export default function Navbar() {
   return (
-    <motion.nav
-      className="flex justify-between items-center px-8 py-4 shadow-sm bg-background sticky top-0 z-50"
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      {/* Logo */}
-      <Link to="/" className="text-2xl font-bold text-primary">
-        InkWave
-      </Link>
+    <nav className="w-full border-b bg-white fixed top-0 z-50">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        {/* Logo */}
+        <motion.h1
+          className="text-2xl font-bold cursor-pointer"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          InkWave
+        </motion.h1>
 
-      {/* Navigation Links */}
-      <div className="hidden md:flex gap-6 text-sm font-medium">
-        <Link to="/" className="hover:text-primary">Home</Link>
-        <Link to="/profile/me" className="hover:text-primary">Profile</Link>
-        <Link to="/about" className="hover:text-primary">About</Link>
-      </div>
+        {/* Links */}
+        <div className="flex items-center gap-6 text-sm font-medium">
+          <motion.a whileHover={{ scale: 1.05 }} href="#">
+            Our story
+          </motion.a>
+          <motion.a whileHover={{ scale: 1.05 }} href="/membership">
+            Membership
+          </motion.a>
 
-      {/* Auth Buttons */}
-      <div className="flex gap-3">
-        <Link to="/login">
-          <Button variant="outline">Login</Button>
-        </Link>
-        <Link to="/Signup">
-          <Button>Sign Up</Button>
-        </Link>
+          <motion.a whileHover={{ scale: 1.05 }} href="#">
+            Write
+          </motion.a>
+          <motion.a whileHover={{ scale: 1.05 }} href="/Login">
+            Sign in
+          </motion.a>
+          <motion.a whileHover={{ scale: 1.05 }} href="/Signup">
+          <Button className="rounded-full bg-black text-white px-4 py-2 hover:bg-gray-800">
+            Get started
+          </Button>
+          </motion.a>
+        </div>
       </div>
-    </motion.nav>
-  );
+    </nav>
+  )
 }

@@ -1,10 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Post from "./pages/Post";
+import Membership from "./pages/Membership";
+import Home from "./pages/Home";
 import PageTransition from "./components/animations/PageTransition";
+import PrivateRoute from "./components/PrivateRoutes";
 
 function App() {
   return (
@@ -14,10 +17,11 @@ function App() {
           path="/"
           element={
             <PageTransition>
-              <Home />
+              <LandingPage />
             </PageTransition>
           }
         />
+         <Route path="/membership" element={<Membership />} />
         <Route
           path="/login"
           element={
@@ -32,6 +36,17 @@ function App() {
             <PageTransition>
               <Signup />
             </PageTransition>
+          }
+        />
+        {/* Protected routes */}
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute>
+              <PageTransition>
+                <Home />
+              </PageTransition>
+            </PrivateRoute>
           }
         />
         <Route
