@@ -1,12 +1,12 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Search, Bell, User, Pencil, Menu } from "lucide-react"
+import { Bell, User, Pencil, Menu } from "lucide-react"
 
 export default function HomeNavbar({ toggleSidebar }: { toggleSidebar: () => void }) {
   return (
     <nav className="w-full border-b bg-white fixed top-0 z-50">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+      <div className="flex items-center justify-between px-6 py-3">
         {/* Left Section */}
         <div className="flex items-center gap-4">
           {/* Hamburger Button (all screen sizes) */}
