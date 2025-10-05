@@ -6,7 +6,6 @@ export interface IPost extends Document{
     title: string;
     content: string;
     tags?: string[];
-    author: mongoose.Types.ObjectId,
     createdAt: Date;
     updatedAt: Date;
 }
@@ -35,11 +34,6 @@ const postSchema = new Schema<IPost>(
                 trim: true,
             },
         ],
-        author: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
-            required: true,
-        },
     },
     {timestamps: true}
 );

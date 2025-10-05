@@ -51,7 +51,7 @@ export const updatePost = async (req: Request, res: Response) => {
 
     // only author can edit
     const userId = (req as any).user.id;
-    if (post.author.toString() !== userId) {
+    if (post.user.toString() !== userId) {
       return res.status(403).json({ message: "Not authorized" });
     }
 
@@ -72,7 +72,7 @@ export const deletePost = async (req: Request, res: Response) => {
     if (!post) return res.status(404).json({ message: "Post not found" });
 
     const userId = (req as any).user.id;
-    if (post.author.toString() !== userId) {
+    if (post.user.toString() !== userId) {
       return res.status(403).json({ message: "Not authorized" });
     }
 
