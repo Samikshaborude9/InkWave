@@ -1,11 +1,11 @@
 import React from 'react'
 import Layout from '@/components/Layout';
-const Profile = () => {
+const Stats = () => {
   return (
     <Layout>
-      <div>Profile</div>
+      <div>Stats</div>
     </Layout>
   )
 }
 
-export default Profile;
+export default Stats

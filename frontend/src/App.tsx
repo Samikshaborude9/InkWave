@@ -6,6 +6,10 @@ import Profile from "./pages/Profile";
 import Post from "./pages/Post";
 import Membership from "./pages/Membership";
 import Home from "./pages/Home";
+import Library from "./pages/Library";
+import Stories from "./pages/Stories";
+import Stats from "./pages/Stats";
+import Following from "./pages/Following";
 import PageTransition from "./components/animations/PageTransition";
 import PrivateRoute from "./components/PrivateRoutes";
 
@@ -21,7 +25,8 @@ function App() {
             </PageTransition>
           }
         />
-         <Route path="/membership" element={<Membership />} />
+        <Route path="/membership" element={<Membership />} />
+
         <Route
           path="/login"
           element={
@@ -38,6 +43,7 @@ function App() {
             </PageTransition>
           }
         />
+
         {/* Protected routes */}
         <Route
           path="/home"
@@ -50,7 +56,48 @@ function App() {
           }
         />
         <Route
-          path="/profile/:id"
+          path="/library"
+          element={
+            <PrivateRoute>
+              <PageTransition>
+                <Library />
+              </PageTransition>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/stories"
+          element={
+            <PrivateRoute>
+              <PageTransition>
+                <Stories />
+              </PageTransition>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/stats"
+          element={
+            <PrivateRoute>
+              <PageTransition>
+                <Stats />
+              </PageTransition>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/following"
+          element={
+            <PrivateRoute>
+              <PageTransition>
+                <Following />
+              </PageTransition>
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
           element={
             <PageTransition>
               <Profile />

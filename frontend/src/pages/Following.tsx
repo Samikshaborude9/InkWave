@@ -1,11 +1,12 @@
 import React from 'react'
 import Layout from '@/components/Layout';
-const Profile = () => {
+
+const Following = () => {
   return (
     <Layout>
-      <div>Profile</div>
+      <div>Following</div>
     </Layout>
   )
 }
 
-export default Profile;
+export default Following;

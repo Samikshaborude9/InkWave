@@ -2,11 +2,17 @@ import { useEffect, useState } from "react"
 import HomeNavbar from "../components/HomeNavbar"
 import Sidebar from "../components/Sidebar"
 
+interface Author{
+  _id: string;
+  username: string;
+  email: string;
+}
+
 interface Posts {
   _id: string;
   title: string;
   content: string;
-  author: string;
+  author: Author;
   createdAt: string;
   updatedAt: string;
   views: number;
@@ -45,11 +51,23 @@ const Home = () => {
           isSidebarOpen ? "ml-64" : "ml-0"
         }`}
       >
-        <h1 className="text-3xl font-bold">Welcome to Home Feed</h1>
-        <p className="mt-4">This is your feed after login.</p>
+        {/* Feed */}
+        <div className="flex max-w-2xl">
+          {posts.map((post) => (
+            <article key={post._id} className="mb-6 p-4 border rounded-lg w-full">
+              <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
+              <p className="text-gray-700 mb-4">{post.content}</p>
+              <div className="flex text-sm text-gray-500 gap-4">
+                <span>{new Date(post.createdAt).toLocaleDateString()}</span>
+                <span>{post.views} views</span>
+                <span>by {post.author.username}</span>
+              </div>
+            </article>
+          ))}
+        </div>
       </main>
     </div>
   )
 }
 
-export default Home
+export default Home;
