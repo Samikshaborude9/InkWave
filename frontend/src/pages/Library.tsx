@@ -8,7 +8,7 @@ const Library = () => {
 
   return (
     <Layout>
-    <div className="p-6 mt-16 ml-64">
+    <div className="flex display-center flex-col min-h-screen">
       {/* Page Heading */}
       <h1 className="text-3xl font-bold mb-6">Your library</h1>
 
@@ -32,7 +32,7 @@ const Library = () => {
       {/* Tab Content */}
       <div>
         {activeTab === "Your lists" && (
-          <div className="bg-green-500 text-white p-6 rounded-lg mb-6">
+          <div className="bg-green-500 text-white p-6 rounded-lg mb-6 size-">
             <h2 className="text-xl font-semibold mb-2">
               Create a list to easily organize and share stories
             </h2>

@@ -3,7 +3,9 @@ import Layout from '@/components/Layout';
 const Profile = () => {
   return (
     <Layout>
-      <div>Profile</div>
+      <div>
+        <main>Profile Content</main>
+      </div>
     </Layout>
   )
 }
