@@ -12,6 +12,7 @@ import Stats from "./pages/Stats";
 import Following from "./pages/Following";
 import PageTransition from "./components/animations/PageTransition";
 import PrivateRoute from "./components/PrivateRoutes";
+import Write from "./pages/Write";
 
 function App() {
   return (
@@ -45,6 +46,17 @@ function App() {
         />
 
         {/* Protected routes */}
+        <Route
+          path="/write"
+          element={
+        <PrivateRoute>
+          <PageTransition>
+            <Write />
+          </PageTransition>
+        </PrivateRoute>
+      }
+       />
+
         <Route
           path="/home"
           element={
