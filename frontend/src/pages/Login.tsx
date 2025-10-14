@@ -11,6 +11,7 @@ const Login = () => {
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+
         try {
             const res = await fetch("http://localhost:5000/api/auth/login", {
                 method: "POST",
@@ -29,6 +30,10 @@ const Login = () => {
             alert("Something went wrong")
         }
     };
+
+
+
+    
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50">
       <Card className="w-[350px] shadow-xl">

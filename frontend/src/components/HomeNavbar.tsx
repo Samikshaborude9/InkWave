@@ -2,8 +2,15 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Bell, User, Pencil, Menu } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
 export default function HomeNavbar({ toggleSidebar }: { toggleSidebar: () => void }) {
+  const navigate = useNavigate();
+
+  const handleWriteClick = () => {
+    navigate("/write");
+  };
+
   return (
     <nav className="w-full border-b bg-white fixed top-0 z-50">
       <div className="flex items-center justify-between px-6 py-3">
@@ -35,7 +42,7 @@ export default function HomeNavbar({ toggleSidebar }: { toggleSidebar: () => voi
 
         {/* Right Actions */}
         <div className="flex items-center gap-4">
-          <Button variant="ghost" className="flex items-center gap-2">
+          <Button variant="ghost" className="flex items-center gap-2" onClick={handleWriteClick} >
             <Pencil size={18} /> Write
           </Button>
           <Button variant="ghost" size="icon">
