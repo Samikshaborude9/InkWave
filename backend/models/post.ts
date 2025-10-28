@@ -2,7 +2,7 @@ import mongoose, {Document, Schema} from "mongoose";
 
 //Interface for post
 export interface IPost extends Document{
-    user: mongoose.Types.ObjectId; // reference to user
+    author: mongoose.Types.ObjectId; // reference to user
     title: string;
     content: string;
     tags?: string[];
@@ -14,7 +14,7 @@ export interface IPost extends Document{
 
 const postSchema = new Schema<IPost>(
     {
-        user: {
+        author: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
             required: true,

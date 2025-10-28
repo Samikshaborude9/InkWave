@@ -5,6 +5,8 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
 import commentRoutes from "./routes/commentRoutes.js"
+import followingRoutes from "./routes/followingRoutes.js";
+import usersRoutes from "./routes/userRoutes.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 dotenv.config();
@@ -15,7 +17,10 @@ const app: Application = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+}));
 
 app.get("/", (_req: Request, res: Response) => {
   res.send("Server is running...");
@@ -24,7 +29,9 @@ app.get("/", (_req: Request, res: Response) => {
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
-app.use("api/posts/:postId/comments", commentRoutes);
+app.use("/api/posts/:postId/comments", commentRoutes);
+app.use("/api/following", followingRoutes);
+app.use("/api/users", usersRoutes);
 
 // Error handler
 app.use(errorHandler);
