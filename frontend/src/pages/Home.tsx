@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
-import HomeNavbar from "../components/HomeNavbar"
-import Sidebar from "../components/Sidebar"
+import { useEffect, useState } from "react";
+import HomeNavbar from "../components/HomeNavbar";
+import Sidebar from "../components/Sidebar";
+import api from "@/lib/api";
 
 interface Author{
   _id: string;
@@ -29,9 +30,14 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch("http://localhost:5000/api/posts");
-      const data = await response.json();
-      setPosts(data);
+      try{
+      const response = await api.get("/posts")
+      const data = response.data;
+      setPosts(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+        setPosts([]);
+      }
     };
 
     fetchPosts();
@@ -52,7 +58,7 @@ const Home = () => {
         }`}
       >
         {/* Feed */}
-        <div className="flex max-w-2xl">
+        <div className="flex max-w-3xl flex-col items-center mx-auto">
           {posts.map((post) => (
             <article key={post._id} className="mb-6 p-4 border rounded-lg w-full">
               <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
