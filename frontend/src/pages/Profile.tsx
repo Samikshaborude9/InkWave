@@ -1,12 +1,14 @@
 import { useState, useEffect, type ChangeEvent, type FormEvent } from "react";
 import Layout from "@/components/Layout";
-import axios from "axios";
+import api from "@/lib/api";
 
 interface User {
   username: string;
   email: string;
   bio: string;
   avatar: string;
+  followers?: string[];
+  following?: string[];
 }
 
 const Profile = () => {
@@ -15,6 +17,8 @@ const Profile = () => {
     email: "",
     bio: "",
     avatar: "",
+    followers: [],
+    following: [],
   });
   const [isEditing, setIsEditing] = useState(false);
   const token = localStorage.getItem("token");
@@ -24,9 +28,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/users/${userId}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await api.get(`users/${userId}`);
         setUser(res.data);
       } catch (err) {
         console.error("Error fetching profile:", err);
@@ -44,10 +46,9 @@ const Profile = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await axios.put(
-        `http://localhost:5000/api/users/${userId}`,
-        { bio: user.bio, avatar: user.avatar },
-        { headers: { Authorization: `Bearer ${token}` } }
+      const res = await api.put(
+        `users/${userId}`,
+        { bio: user.bio, avatar: user.avatar }
       );
       alert("Profile updated successfully");
       setUser(res.data.user);
@@ -71,6 +72,12 @@ const Profile = () => {
             <div>
               <h2 className="text-xl font-semibold">{user.username}</h2>
               <p className="text-gray-500">{user.email}</p>
+              <div>
+                <span className="font-semibold">Followers:</span> {user.followers?.length || 0}
+              </div>
+              <div>
+                <span className="font-semibold">Following:</span> {user.following?.length || 0}
+              </div>
             </div>
           </div>
           <button

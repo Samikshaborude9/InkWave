@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import api from "@/lib/api";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -13,27 +14,17 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const res = await fetch("http://localhost:5000/api/auth/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
-            });
-            const data = await res.json();
-
-            if (res.ok){
-                localStorage.setItem("token", data.token);
-                navigate("/Home");      
-            }else{
-                alert(data.message || "Login failed");
-            }
-        }catch(err){
-            alert("Something went wrong")
+            const res = await api.post("/auth/login", { email, password });
+            const data = res.data;
+            localStorage.setItem("token", data.token);
+            if(data.user?.id) localStorage.setItem("userId", data.user.id);
+            
+            navigate("/Home");
+        }catch(err: any){
+            alert(err.response?.data?.message || "Something went wrong")
         }
     };
 
-
-
-    
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50">
       <Card className="w-[350px] shadow-xl">
