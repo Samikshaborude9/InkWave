@@ -3,22 +3,46 @@ import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { Check } from "lucide-react"
 import { useNavigate } from "react-router-dom"; 
+import Navbar from "@/components/Navbar";
+import membership from "@/assets/membership.png";
 
 
 export default function Membership() {
   const navigate = useNavigate();
   return (
-    <div className="bg-white min-h-screen px-6 pt-8">
-      {/* Heading */}
-      <motion.h1
-        className="text-6xl font-weight-400 mb-12"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        Membership plans
-      </motion.h1>
+    <>
+    <header>
+      <Navbar />
+    </header>
+    <main>
 
+      <section className=" mb-16 overflow-hidden relative pt-40 bg-gray-50">
+      <div className="flex flex-row justify-around">
+        <div>
+          <span>Pricing</span>
+          <div>
+        {/* Heading */}
+          <motion.h1
+            className="text-3xl font-weight-400 mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Find the plan that suits your needs.
+          </motion.h1>
+          <div className="pb-6">
+            <p>Choose a plan that fits your needs and start enjoying premium content today.</p>
+          </div>
+        </div>
+        </div>
+
+
+        <div className="w-1/3 h-1/3 hidden md:block">
+          <img src={membership} alt="Membership" className="w-auto h-auto" />
+        </div>
+
+      </div>
+      </section>
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {/* Plan 1 */}
@@ -98,6 +122,7 @@ export default function Membership() {
           </Card>
         </motion.div>
       </div>
-    </div>
+    </main>
+    </>
   )
 }
