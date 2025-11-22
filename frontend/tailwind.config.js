@@ -12,6 +12,12 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+		
+      fontFamily: {
+        geist: ["Geist", "sans-serif"],
+        geistMono: ["Geist Mono", "monospace"],
+      },
+
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
