@@ -5,17 +5,19 @@ import { Check } from "lucide-react"
 import { useNavigate } from "react-router-dom"; 
 import Navbar from "@/components/Navbar";
 import membership from "@/assets/membership.png";
+import Footer from "@/components/Footer";
 
 
 export default function Membership() {
   const navigate = useNavigate();
   return (
-    <>
-    <header>
-      <Navbar />
-    </header>
+    <div>
+    
     <main>
       <section className="mb-16  relative pt-48 bg-gray-50">
+        <header>
+      <Navbar />
+    </header>
         <div className="max-w-7xl mx-auto justify-between px-12">
       <div className="flex flex-col md:flex-row gap-6 md:gap-16 justify-between">
         <div className="">
@@ -31,7 +33,7 @@ export default function Membership() {
             Find the plan that<br/> suits your needs.
           </motion.h1>
           <div className="pb-6">
-            <Button className="rounded bg-black text-white mb-8 hover:bg-slate-800">Docs by InkWave</Button>
+            <Button className="rounded-full bg-black text-white mb-8 hover:bg-slate-800">Docs by InkWave</Button>
             <p className="text-lg text-gray-800">Choose the perfect plan to build your <b> Docs on Hashnode.</b><br/> Start today, no credit card required.</p>
           </div>
         </div>
@@ -47,12 +49,12 @@ export default function Membership() {
       </section>
       {/* Cards */}
       {/* Pricing cards - responsive 1/2/3 columns */}
-<div className="max-w-7xl mx-auto px-6 md:px-12 mt-12 pb-20">
+<div className="max-w-7xl mx-auto px-6 md:px-12 mt-12 pb-20 bg-white py-6">
   <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8">
     
     {/* Card 1 */}
-    <Card className="p-2 rounded-xl border shadow-sm hover:shadow-2xl transition-shadow">
-      <CardHeader className="bg-gray-50 rounded-xl mb-2">
+    <Card className="p-2 rounded-2xl border shadow-sm hover:shadow-2xl transition-shadow">
+      <CardHeader className="bg-gray-100 rounded-2xl mb-2">
         <div><svg fill="#ffffff" width="54px" height="54px" viewBox="-2.4 -2.4 28.80 28.80" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="1.2"><path d="M4,21a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V3a1,1,0,0,0-1-1H5A1,1,0,0,0,4,3ZM12,7.5a2,2,0,1,1-2,2A2,2,0,0,1,12,7.5ZM8.211,16.215a4,4,0,0,1,7.578,0A.993.993,0,0,1,14.83,17.5H9.18A1,1,0,0,1,8.211,16.215Z"></path></g><g id="SVGRepo_iconCarrier"><path d="M4,21a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V3a1,1,0,0,0-1-1H5A1,1,0,0,0,4,3ZM12,7.5a2,2,0,1,1-2,2A2,2,0,0,1,12,7.5ZM8.211,16.215a4,4,0,0,1,7.578,0A.993.993,0,0,1,14.83,17.5H9.18A1,1,0,0,1,8.211,16.215Z"></path></g></svg></div>
         <CardTitle className="text-lg font-semibold">Free plan</CardTitle>
         <p className="text-sm text-gray-500 mt-1">For individual creators.</p>
@@ -83,11 +85,11 @@ export default function Membership() {
     </Card>
 
     {/* Card 2 - Most popular */}
-    <Card className="p-2 rounded-xl border-2 border-indigo-100 shadow-sm hover:shadow-2xl transition-shadow relative">
+    <Card className="p-2 rounded-2xl border-2 border-indigo-100 shadow-sm hover:shadow-2xl transition-shadow relative">
       <div className="absolute -top-3 right-4 bg-indigo-50 text-indigo-700 text-xs px-3 py-1 rounded-full">
         Most popular
       </div>
-      <CardHeader className="bg-gray-50 rounded-xl mb-2">
+      <CardHeader className="bg-gray-100 rounded-2xl mb-2">
         <div><svg fill="#ffffff" width="54px" height="54px" viewBox="-2.4 -2.4 28.80 28.80" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="1.2"><path d="M4,21a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V3a1,1,0,0,0-1-1H5A1,1,0,0,0,4,3ZM12,7.5a2,2,0,1,1-2,2A2,2,0,0,1,12,7.5ZM8.211,16.215a4,4,0,0,1,7.578,0A.993.993,0,0,1,14.83,17.5H9.18A1,1,0,0,1,8.211,16.215Z"></path></g><g id="SVGRepo_iconCarrier"><path d="M4,21a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V3a1,1,0,0,0-1-1H5A1,1,0,0,0,4,3ZM12,7.5a2,2,0,1,1-2,2A2,2,0,0,1,12,7.5ZM8.211,16.215a4,4,0,0,1,7.578,0A.993.993,0,0,1,14.83,17.5H9.18A1,1,0,0,1,8.211,16.215Z"></path></g></svg></div>
         <CardTitle className="text-lg font-semibold">Startup</CardTitle>
         <p className="text-sm text-gray-500 mt-1">For small teams.</p>
@@ -117,8 +119,8 @@ export default function Membership() {
     </Card>
 
     {/* Card 3 */}
-        <Card className="p-2 rounded-xl border-2 shadow-sm hover:shadow-2xl transition-shadow relative">
-      <CardHeader className="bg-gray-50 rounded-xl mb-2">
+        <Card className="p-2 rounded-2xl border-2 shadow-sm hover:shadow-2xl transition-shadow relative">
+      <CardHeader className="bg-gray-100 rounded-2xl mb-2">
         <div><svg fill="#ffffff" width="54px" height="54px" viewBox="-2.4 -2.4 28.80 28.80" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="1.2"><path d="M4,21a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V3a1,1,0,0,0-1-1H5A1,1,0,0,0,4,3ZM12,7.5a2,2,0,1,1-2,2A2,2,0,0,1,12,7.5ZM8.211,16.215a4,4,0,0,1,7.578,0A.993.993,0,0,1,14.83,17.5H9.18A1,1,0,0,1,8.211,16.215Z"></path></g><g id="SVGRepo_iconCarrier"><path d="M4,21a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V3a1,1,0,0,0-1-1H5A1,1,0,0,0,4,3ZM12,7.5a2,2,0,1,1-2,2A2,2,0,0,1,12,7.5ZM8.211,16.215a4,4,0,0,1,7.578,0A.993.993,0,0,1,14.83,17.5H9.18A1,1,0,0,1,8.211,16.215Z"></path></g></svg></div>
         <CardTitle className="text-lg font-semibold">Enterprise</CardTitle>
         <p className="text-sm text-gray-500 mt-1">For large organizations.</p>
@@ -149,6 +151,7 @@ export default function Membership() {
 </div>
 
     </main>
-    </>
+    <Footer />
+    </div>
   )
 }
