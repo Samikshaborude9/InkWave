@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
+import api from "@/lib/api";
+import { useNavigate } from "react-router-dom";
 
 const Write = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [isPosting, setIsPosting] = useState(false);
+  const navigate = useNavigate();
 
   const handlePost = async () => {
     if (!title.trim() || !body.trim()) {
@@ -17,17 +20,26 @@ const Write = () => {
 
     try {
       // Simulated API call — replace with your backend endpoint later
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      console.log("Posted blog:", { title, body });
-      alert("Your blog has been posted successfully!");
-
-      // Clear inputs after posting
-      setTitle("");
-      setBody("");
-    } catch (error) {
+      const token = localStorage.getItem("token");
+      const res = await api.post(
+        "/posts",
+        { title, content: body },
+        {
+          headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+        }
+      );
+      // success -> navigate to home (home should fetch posts)
+      if (res.status >= 200 && res.status < 300) {
+        alert("Your blog has been posted successfully!");
+        setTitle("");
+        setBody("");
+        navigate("/home");
+      } else {
+        alert(res.data?.message || "Failed to post");
+      }
+    } catch (error: any) {
       console.error("Error posting blog:", error);
-      alert("Something went wrong while posting your blog.");
+      alert(error?.response?.data?.message  ||"Something went wrong while posting your blog.");
     } finally {
       setIsPosting(false);
     }
