@@ -19,7 +19,6 @@ const Write = () => {
     setIsPosting(true);
 
     try {
-      // Simulated API call — replace with your backend endpoint later
       const token = localStorage.getItem("token");
       const res = await api.post(
         "/posts",
