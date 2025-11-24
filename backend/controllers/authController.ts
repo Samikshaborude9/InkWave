@@ -49,7 +49,7 @@ export const login = async (req: Request, res: Response) =>{
           throw new Error("JWT_SECRET is not defined");
         }
 
-        const token = jwt.sign({id: user._id}, JWT_SECRET, {expiresIn: "3h"});
+        const token = jwt.sign({id: user._id}, JWT_SECRET, {expiresIn: "2d"});
 
         res.json({token, user: {id: user._id, username: user.username , email: user.email}});
     } catch (err: any) {
