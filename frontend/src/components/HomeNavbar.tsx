@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Bell, User, Pencil, Menu } from "lucide-react"
+import { User, Pencil, Menu } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 
 export default function HomeNavbar({ toggleSidebar }: { toggleSidebar: () => void }) {
@@ -45,13 +45,11 @@ export default function HomeNavbar({ toggleSidebar }: { toggleSidebar: () => voi
           <Button variant="ghost" className="flex items-center gap-2" onClick={handleWriteClick} >
             <Pencil size={18} /> Write
           </Button>
-          <Button variant="ghost" size="icon">
-            <Bell size={20} />
-          </Button>
           <Button
             variant="ghost"
             size="icon"
             className="rounded-full border w-9 h-9 flex items-center justify-center"
+            onClick={() => navigate("/profile")}
           >
             <User size={20} />
           </Button>
