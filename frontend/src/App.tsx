@@ -13,6 +13,7 @@ import Following from "./pages/Following";
 import PageTransition from "./components/animations/PageTransition";
 import PrivateRoute from "./components/PrivateRoutes";
 import Write from "./pages/Write";
+import OurStory from "./pages/OurStory";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           }
         />
         <Route path="/membership" element={<Membership />} />
+        <Route path="/ourstory" element={<OurStory />} />
 
         <Route
           path="/login"
