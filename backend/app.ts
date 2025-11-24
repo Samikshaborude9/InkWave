@@ -7,6 +7,7 @@ import postRoutes from "./routes/postRoutes.js";
 import commentRoutes from "./routes/commentRoutes.js"
 import followingRoutes from "./routes/followingRoutes.js";
 import usersRoutes from "./routes/userRoutes.js";
+import listRoutes from "./routes/listRoutes.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 dotenv.config();
@@ -32,6 +33,7 @@ app.use("/api/posts", postRoutes);
 app.use("/api/posts/:postId/comments", commentRoutes);
 app.use("/api/following", followingRoutes);
 app.use("/api/users", usersRoutes);
+app.use("/api/lists", listRoutes);
 
 // Error handler
 app.use(errorHandler);
