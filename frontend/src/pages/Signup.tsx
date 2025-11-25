@@ -1,8 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import api from "@/lib/api";
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -14,57 +15,85 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password }),
-      });
+      const res = await api.post("/auth/register", { username, email, password });
+      const data = res.data;
 
-      const data = await res.json();
-
-      if (res.ok) {
+      if (res.status >= 200 && res.status < 300) {
         alert("Signup successful! Please login.");
         navigate("/login");
       } else {
         alert(data.message || "Signup failed");
       }
-    } catch (err) {
-      alert("Something went wrong");
+    } catch (err: any) {
+      alert(err.response?.data?.message || "Something went wrong");
     }
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
-      <Card className="w-[350px] shadow-xl">
+    <div className="min-h-screen w-full flex items-center justify-center bg-[#f5f6f8]">
+      <Card className="w-[400px] rounded-2xl border border-gray-200 shadow-xl bg-white">
         <CardHeader>
-          <CardTitle>Sign Up</CardTitle>
+          <CardTitle className="text-center text-3xl font-semibold text-black">
+            Create your account
+          </CardTitle>
         </CardHeader>
+
         <CardContent>
-          <form onSubmit={handleSignup} className="space-y-4">
-            <Input
-              type="text"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-            <Input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <Input
-              type="password"
-              placeholder="Password (min 6 chars)"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <Button type="submit" className="w-full">
+          <form onSubmit={handleSignup} className="space-y-6">
+
+            <div className="space-y-1">
+              <label className="text-sm text-gray-600">Username</label>
+              <Input
+                type="text"
+                className="bg-white border-gray-300 text-black placeholder:text-gray-400"
+                placeholder="Enter username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-sm text-gray-600">Email</label>
+              <Input
+                type="email"
+                className="bg-white border-gray-300 text-black placeholder:text-gray-400"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-sm text-gray-600">Password</label>
+              <Input
+                type="password"
+                className="bg-white border-gray-300 text-black placeholder:text-gray-400"
+                placeholder="Password (min 6 chars)"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            {/* Primary CTA (black button like "Sign In" in navbar) */}
+            <Button
+              type="submit"
+              className="w-full py-2 rounded-full bg-black text-white font-medium hover:bg-black/90 transition"
+            >
               Sign Up
             </Button>
+
+            <p className="text-center text-gray-500 text-sm">
+              Already have an account?{" "}
+              <span
+                onClick={() => navigate("/login")}
+                className="text-black font-medium hover:underline cursor-pointer"
+              >
+                Login
+              </span>
+            </p>
           </form>
         </CardContent>
       </Card>
