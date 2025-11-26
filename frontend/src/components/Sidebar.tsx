@@ -1,4 +1,4 @@
-import { Home, Book, User, FileText, BarChart2, Users } from "lucide-react"
+import { Home, Book, User, FileText, BarChart2 } from "lucide-react"
 
 export default function Sidebar({ isOpen }: { isOpen: boolean }) {
   return (
@@ -21,9 +21,6 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
         </a>
         <a href="/stats" className="flex items-center gap-3 text-gray-700 hover:text-black">
           <BarChart2 size={20} /> Stats
-        </a>
-        <a href="/following" className="flex items-center gap-3 text-gray-700 hover:text-black">
-          <Users size={20} /> Following
         </a>
       </nav>
     </aside>

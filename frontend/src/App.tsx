@@ -9,7 +9,6 @@ import Home from "./pages/Home";
 import Library from "./pages/Library";
 import Stories from "./pages/Stories";
 import Stats from "./pages/Stats";
-import Following from "./pages/Following";
 import PageTransition from "./components/animations/PageTransition";
 import PrivateRoute from "./components/PrivateRoutes";
 import Write from "./pages/Write";
@@ -95,16 +94,6 @@ function App() {
             <PrivateRoute>
               <PageTransition>
                 <Stats />
-              </PageTransition>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/following"
-          element={
-            <PrivateRoute>
-              <PageTransition>
-                <Following />
               </PageTransition>
             </PrivateRoute>
           }
