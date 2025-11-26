@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input" // Assuming shadcn/ui Input
 import { Button } from "@/components/ui/button"; // Assuming shadcn/ui Button
 import api from "@/lib/api"; // Your backend connection
+import type { AxiosError } from 'axios';
 
 const LoginCard: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -20,11 +21,11 @@ const LoginCard: React.FC = () => {
       localStorage.setItem("token", data.token);
       if(data.user?.id) localStorage.setItem("userId", data.user.id);
       
-      navigate("/Home"); // Redirect to home page on success
-    } catch(err: any) {
-      // Use a more user-friendly UI component for errors if available, 
-      // but for simplicity, we keep the alert for now.
-      alert(err.response?.data?.message || "Something went wrong during login");
+      navigate("/home "); // Redirect to home page on success
+    } catch(err: unknown) {
+      const axiosErr = err as AxiosError<{ message?: string }>;
+      const serverMessage = axiosErr?.response?.data?.message;
+      alert(serverMessage || axiosErr?.message || "Something went wrong during login");
     }
   };
 
