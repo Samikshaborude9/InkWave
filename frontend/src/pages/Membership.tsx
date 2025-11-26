@@ -2,14 +2,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { Check } from "lucide-react"
-import { useNavigate } from "react-router-dom"; 
 import Navbar from "@/components/Navbar";
 import membership from "@/assets/membership.png";
 import Footer from "@/components/Footer";
 
 
 export default function Membership() {
-  const navigate = useNavigate();
   return (
     <div>
     

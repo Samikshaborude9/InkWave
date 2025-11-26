@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-import { useNavigate } from "react-router-dom"; 
 import Navbar from "@/components/Navbar";
 import membership from "@/assets/membership.png";
 import Footer from "@/components/Footer";
 
 
 export default function OurStory() {
-  const navigate = useNavigate();
   return (
     <div>
     
