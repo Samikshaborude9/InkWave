@@ -114,13 +114,13 @@ export default function Library() {
               <p className="text-sm text-gray-600 mb-4">Pick posts, name your list and save it for later.</p>
               <div className="flex items-center gap-4">
                 <button
-                  className="bg-black text-white px-4 py-2 rounded-md"
+                  className="bg-black text-white px-4 py-2 rounded-full text-sm"
                   onClick={openCreateModal}
                 >
                   Start a list
                 </button>
                 <button
-                  className="bg-white border px-4 py-2 rounded-md text-sm"
+                  className="bg-white border px-4 py-2 rounded-full text-sm"
                   onClick={() => {
                     // quick demo: prefill posts if none loaded
                     if (posts.length === 0) {
@@ -187,8 +187,7 @@ export default function Library() {
           )}
 
           {activeTab === "Highlights" && <p>No highlights yet.</p>}
-          {activeTab === "Reading history" && <p>Your reading history will appear here.</p>}
-          {activeTab === "Responses" && <p>No responses yet.</p>}
+          
         </div>
 
         {/* Preview modal for a saved list */}
@@ -294,7 +293,7 @@ function CreateListModal({
 
             <div className="mt-4 text-sm text-gray-600">Selected: {Object.values(selected).filter(Boolean).length}</div>
             <div className="mt-4">
-              <button onClick={handleSave} className="bg-green-600 text-white px-4 py-2 rounded">Save list</button>
+              <button onClick={handleSave} className="bg-green-600 text-white px-4 py-2 rounded-full text-sm">Save list</button>
             </div>
           </div>
 
