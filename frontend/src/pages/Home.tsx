@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import HomeNavbar from "../components/HomeNavbar";
 import Sidebar from "../components/Sidebar";
+import { Link } from "react-router-dom";
 import api from "@/lib/api";
 
 interface Author {
@@ -72,20 +73,34 @@ const Home = () => {
           !isMobile && isSidebarOpen ? "ml-64" : "ml-0"
         }`}
       >
-        {/* Feed */}
-        <div className="flex max-w-3xl flex-col items-center mx-auto">
-          {posts.map((post) => (
-            <article key={post._id} className="mb-6 p-4 border rounded-lg w-full bg-gray-50">
-              <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
-              <p className="text-gray-800 mb-4">{post.content}</p>
-              <div className="flex text-sm text-gray-600 gap-4">
-                <span>{new Date(post.createdAt).toLocaleDateString()}</span>
-                {/* <span>{post.views} views</span> */}
-                <span>by {post.author.username}</span>
-              </div>
-            </article>
-          ))}
-        </div>
+{/* Feed */}
+<div className="max-w-3xl mx-auto">
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+    {posts.map((post) => (
+     <Link
+  to={`/posts/${post._id}`}
+  key={post._id}
+  className="block p-6 border rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow duration-150"
+>
+  {/* Title */}
+  <h2 className="text-xl font-semibold py-2">{post.title}</h2>
+
+  {/* Content preview (3 lines) */}
+  <p className="text-gray-600 mb-4 line-clamp-3 text-sm tracking-tight">
+    {post.content || "No content available"}
+  </p>
+
+  {/* Footer - Date + Author */}
+  <div className="flex text-sm text-gray-400 gap-4">
+    <span>{new Date(post.createdAt).toLocaleDateString()}</span>
+    <span>by {post.author?.username || "Unknown"}</span>
+  </div>
+</Link>
+
+    ))}
+  </div>
+</div>
+
       </main>
 
       {/* Mobile Sidebar Overlay */}
