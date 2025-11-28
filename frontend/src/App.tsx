@@ -13,6 +13,7 @@ import PageTransition from "./components/animations/PageTransition";
 import PrivateRoute from "./components/PrivateRoutes";
 import Write from "./pages/Write";
 import OurStory from "./pages/OurStory";
+import PostDetail from "./pages/PostDetail";
 
 function App() {
   return (
@@ -112,6 +113,14 @@ function App() {
           element={
             <PageTransition>
               <Post />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/posts/:id"
+          element={
+            <PageTransition>
+              <PostDetail />
             </PageTransition>
           }
         />

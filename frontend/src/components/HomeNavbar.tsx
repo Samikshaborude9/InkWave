@@ -36,7 +36,7 @@ export default function HomeNavbar({ toggleSidebar }: { toggleSidebar: () => voi
         {/* Search Bar (desktop only) */}
         <div className="flex-1 px-6 hidden md:flex">
           <Input
-            placeholder="Search stories, writers, or topics"
+            placeholder="Search Blogs"
             className="w-full rounded-full"
           />
         </div>

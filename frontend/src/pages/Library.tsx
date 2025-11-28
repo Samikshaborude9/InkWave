@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Layout from '@/components/Layout';
 import api from "@/lib/api";
 
-const tabs = ["Your lists", "Saved lists", "Highlights"];
+const tabs = ["Your lists", "Saved lists"];
 
 type PostPreview = {
   _id: string;
@@ -186,7 +186,6 @@ export default function Library() {
             </div>
           )}
 
-          {activeTab === "Highlights" && <p>No highlights yet.</p>}
           
         </div>
 
