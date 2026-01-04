@@ -4,14 +4,15 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
-import commentRoutes from "./routes/commentRoutes.js"
+import commentRoutes from "./routes/commentRoutes.js";
 import followingRoutes from "./routes/followingRoutes.js";
 import usersRoutes from "./routes/userRoutes.js";
 import listRoutes from "./routes/listRoutes.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 dotenv.config();
-console.log("JWT_SECRET from env:", process.env.JWT_SECRET);
+
+// DB
 connectDB();
 
 const app: Application = express();
@@ -19,10 +20,11 @@ const app: Application = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", process.env.FRONTEND_ORIGIN || ""],
   credentials: true,
 }));
 
+// Base route
 app.get("/", (_req: Request, res: Response) => {
   res.send("Server is running...");
 });
@@ -38,7 +40,12 @@ app.use("/api/lists", listRoutes);
 // Error handler
 app.use(errorHandler);
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log(`Server running on localhost:${PORT}`);
-});
+// Only listen locally (not in production on Vercel)
+// const port = process.env.PORT || 5000;
+// if (process.env.NODE_ENV !== "production") {
+//   app.listen(port, () => {
+//     console.log(`Server is running on port ${port}`);
+//   });
+// }
+
+export default app;

@@ -109,7 +109,7 @@ export default function Library() {
         {/* Tab Content */}
         <div>
           {activeTab === "Your lists" && (
-            <div className="bg-white p-6 rounded-lg mb-6 shadow-sm">
+            <div className="bg-white p-6 rounded-2xl mb-6 shadow-sm">
               <h2 className="text-xl font-semibold mb-3">Create a list to easily organize and share stories</h2>
               <p className="text-sm text-gray-600 mb-4">Pick posts, name your list and save it for later.</p>
               <div className="flex items-center gap-4">
@@ -143,7 +143,7 @@ export default function Library() {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {savedLists.map((list) => (
-                    <div key={list._id} className="p-4 border rounded-lg bg-white shadow-sm">
+                    <div key={list._id} className="p-4 border rounded-2xl bg-white shadow-sm">
                       <div className="flex justify-between items-start">
                         <div>
                           <div className="font-semibold text-lg">{list.name}</div>
@@ -192,7 +192,7 @@ export default function Library() {
         {/* Preview modal for a saved list */}
         {previewList && (
           <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 p-4">
-            <div className="bg-white w-full max-w-3xl rounded-lg p-6 shadow-xl overflow-auto max-h-[80vh]">
+            <div className="bg-white w-full max-w-3xl rounded-2xl p-6 shadow-xl overflow-auto max-h-[80vh]">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-semibold">{previewList.name}</h3>
                 <button className="text-sm text-gray-600" onClick={() => setPreviewList(null)}>Close</button>
@@ -267,7 +267,7 @@ function CreateListModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 px-4 bg-black/40">
-      <div className="bg-white w-full max-w-4xl rounded-lg shadow-xl overflow-hidden">
+      <div className="bg-white w-full max-w-4xl rounded-2xl shadow-xl overflow-hidden p-4">
         <div className="flex items-center justify-between p-4 border-b">
           <div>
             <h3 className="text-lg font-semibold">Create a new list</h3>

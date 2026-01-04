@@ -10,7 +10,7 @@ const Stories = () => {
       <div className='mx-auto flex flex-col min-h-screen px-6 md:px-12 lg:px-20 py-10'>
         <div className='flex justify-between items-center mb-8'>
           <h1 className='text-3xl font-bold mb-4'>Stories</h1>
-          <Button variant="outline" className='rounded-full'>Import a Story</Button>
+          <Button variant="outline" className='rounded-full'>Write your Story</Button>
         </div>
         <div className='flex space-x-8 border-b mb-8'>
           {tabs.map((tab) => (

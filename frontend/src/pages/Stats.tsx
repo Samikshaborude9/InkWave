@@ -14,9 +14,9 @@ import {
 const tabs = ["Stories", "Audience"];
 
 const data = [
-  { date: "Oct 1", views: 0, reads: 0 },
-  { date: "Oct 4", views: 0, reads: 0 },
-  { date: "Oct 7", views: 0, reads: 0 },
+  { date: "Oct 1", views: 10, reads: 4 },
+  { date: "Oct 4", views: 5, reads: 3 },
+  { date: "Oct 7", views: 15, reads: 8 },
 ];
 
 const Stats = () => {
@@ -66,10 +66,10 @@ const Stats = () => {
               <div className="flex flex-wrap gap-8 mb-6">
                 {[
                   { label: "Presentations", value: 0, tag: "New" },
-                  { label: "Views", value: 0 },
-                  { label: "Reads", value: 0 },
-                  { label: "Followers", value: 0 },
-                  { label: "Subscribers", value: 0 },
+                  { label: "Views", value: 40 },
+                  { label: "Reads", value: 12 },
+                  { label: "Followers", value: 5 },
+                  { label: "Subscribers", value: 2 },
                 ].map((item) => (
                   <div key={item.label} className="flex flex-col items-start">
                     <div className="flex items-center space-x-2">

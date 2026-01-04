@@ -46,12 +46,13 @@ export default function PostDetail() {
           ← Back
         </button>
 
-        <h1 className="text-2xl font-bold mb-4">{post.title}</h1>
-        <div className="text-sm text-gray-500 mb-4">by {post.author?.username ?? "Unknown"} • {post.createdAt ? new Date(post.createdAt).toLocaleString() : ""}</div>
+        <h1 className="text-2xl font-semibold mb-4">{post.title}</h1>
+        <div className="text-sm text-gray-500 mb-2">by {post.author?.username ?? "Unknown"}</div>
+        <div className="text-sm text-gray-500 mb-8">{post.createdAt ? new Date(post.createdAt).toLocaleString() : ""} </div>
 
-        <article className="prose max-w-none">
+        <article className="prose max-w-none bg-white p-6 rounded-xl shadow-sm">
           {/* if content is HTML use dangerouslySetInnerHTML, otherwise render text */}
-          <div className="tracking-tight">{post.content}</div>
+          <div className="tracking-tight text-justify leading-relaxed whitespace-pre-line">{post.content}</div>
         </article>
       </div>
     </Layout>
