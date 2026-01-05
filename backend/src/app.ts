@@ -19,10 +19,29 @@ const app: Application = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors({
-  origin: ["http://localhost:5173", process.env.FRONTEND_ORIGIN || ""],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "https://ink-wave-3akf.vercel.app",
+      ];
+
+      // allow server-to-server / postman / vercel internal calls
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
 
 // Base route
 app.get("/", (_req: Request, res: Response) => {
